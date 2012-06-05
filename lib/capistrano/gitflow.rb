@@ -29,8 +29,17 @@ module Capistrano
 
           def next_staging_tag
             hwhen   = Date.today.to_s
-            who = `whoami`.chomp.to_url
-            what = Capistrano::CLI.ui.ask("What does this release introduce? (this will be normalized and used in the tag for this release) ").to_url
+            if !ENV['CAP_WHO'].nil? and ENV['CAP_WHO'] != ""
+              who = ENV['CAP_WHO'].chomp.to_url
+            else
+              who = `whoami`.chomp.to_url
+            end
+            
+            if !ENV['CAP_WHAT'].nil? and ENV['CAP_WHAT'] != ""
+              what = ENV['CAP_WHAT'].chomp.to_url
+            else
+              what = Capistrano::CLI.ui.ask("What does this release introduce? (this will be normalized and used in the tag for this release) ").to_url
+            end
 
             last_staging_tag = last_tag_matching("staging-#{hwhen}-*")
             new_tag_serial = if last_staging_tag && last_staging_tag =~ /staging-[0-9]{4}-[0-9]{2}-[0-9]{2}\-([0-9]*)/

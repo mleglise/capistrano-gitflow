@@ -41,6 +41,14 @@ After experimenting with several workflows for deployment in git, I've finally f
 * You can push to staging at any time; every staging push is automatically tagged with a unique tag.
 * You can only push a staging tag to production. This helps to enforce QA of all pushes to production.
 
+=== OPTIONAL ENVIRONMENT VARIABLES
+
+If you need to specify the user and description tag ahead of time, instead of
+using `whoami` and prompting for input, specify the ENV variables:
+
+* CAP_WHO: replacement for `whoami`
+* CAP_WHAT: replacement for user input prompt
+
 === PUSH TO STAGING
 
 Whenever you want to push the currently checked-out code to staging, just do:
