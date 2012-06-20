@@ -49,6 +49,10 @@ using `whoami` and prompting for input, specify the ENV variables:
 * CAP_WHO: replacement for `whoami`
 * CAP_WHAT: replacement for user input prompt
 
+If you want to bypass the confirmation prompts to deploy:
+
+* CAP_NOPROMPT: set this variable to any string value to bypass prompts
+
 === PUSH TO STAGING
 
 Whenever you want to push the currently checked-out code to staging, just do:
